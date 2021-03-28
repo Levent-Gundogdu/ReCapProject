@@ -1,10 +1,11 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+//Core katmani diger katmanlari referans almaz!
+namespace Core.DataAccess //class ve interface'leri kolay ulasmak icin namespace'e koyariz
 {
     //Generic Repository Design Pattern
 
