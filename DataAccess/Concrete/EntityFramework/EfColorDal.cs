@@ -1,7 +1,9 @@
 ﻿using DataAccess.Abstract;
+using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -11,22 +13,40 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public void Add(Entities.Concrete.Color entity)
         {
-            throw new NotImplementedException();
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                var addedEntity = context.Entry(entity);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Entities.Concrete.Color entity)
         {
-            throw new NotImplementedException();
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                var deletedEntity = context.Entry(entity);
+                deletedEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
-        public Entities.Concrete.Color Get(Expression<Func<Entities.Concrete.Color, bool>> filter)
+        public Color Get(Expression<Func<Color, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                return context.Set<Color>().SingleOrDefault(filter);
+            }
         }
 
-        public List<Entities.Concrete.Color> GetAll(Expression<Func<Entities.Concrete.Color, bool>> filter = null)
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                return filter == null
+                    ? context.Set<Color>().ToList()
+                    : context.Set<Color>().Where(filter).ToList();
+            }
         }
 
         public void Update(Entities.Concrete.Color entity)

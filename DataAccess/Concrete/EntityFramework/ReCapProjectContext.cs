@@ -7,7 +7,6 @@ using System.Text;
 namespace DataAccess.Concrete.EntityFramework
 {
     //Context DB tablolari ile proje class'larini baglar.
-
     public class ReCapProjectContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -17,9 +16,9 @@ namespace DataAccess.Concrete.EntityFramework
         }
 
 
-        public DbSet<Car> Car { get; set; }
-        public DbSet<Brand> Brand { get; set; }
-        public DbSet<Color> Color { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Color> Colors { get; set; }
 
     }
 }

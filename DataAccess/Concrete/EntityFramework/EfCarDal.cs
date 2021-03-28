@@ -41,7 +41,6 @@ namespace DataAccess.Concrete.EntityFramework
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
                 return context.Set<Car>().SingleOrDefault(filter);
-
             }
         }
 
@@ -49,7 +48,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
-                return filter == null 
+                return filter == null
                     ? context.Set<Car>().ToList() //DbSet'deki Car tablosuna yerles, butun tabloyu listeyi cevirerek bana ver demektir.
                     : context.Set<Car>().Where(filter).ToList();
                     
